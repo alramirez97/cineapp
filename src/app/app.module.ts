@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AddmovieComponent } from './addmovie/addmovie.component';
 import { MenuComponent } from './menu/menu.component';
+import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllmoviesComponent } from './allmovies/allmovies.component';
-import { EntidadesComponent } from './entidades/entidades.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +19,12 @@ import { EntidadesComponent } from './entidades/entidades.component';
     FooterComponent,
     SettingsComponent,
     AllmoviesComponent,
-    EntidadesComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

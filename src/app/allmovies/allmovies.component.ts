@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { peliculas } from '../entidades/peliculas';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-allmovies',
@@ -12,17 +13,18 @@ export class AllmoviesComponent implements OnInit {
 
   peli: peliculas = {} as peliculas;
   pelis:any;
+  base: string = 'http://localhost:3000';
 
   constructor(  private http: HttpClient, 
                 private activatedRoiuter:ActivatedRoute) { 
 
-    http.get('https://cineapp-plus.herokuapp.com/peliculas')
+    http.get<peliculas>(this.base +'/peliculas')
     .subscribe(response=>{this.pelis=response});
 
   }
 
   cargar(): void{
-    this.http.get('https://cineapp-plus.herokuapp.com/peliculas')
+    this.http.get(this.base +'/peliculas')
     .subscribe(response=>{this.pelis=response});
   }
 
