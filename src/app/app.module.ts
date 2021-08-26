@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllmoviesComponent } from './allmovies/allmovies.component';
+import { EntidadesComponent } from './entidades/entidades.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AllmoviesComponent } from './allmovies/allmovies.component';
     MenuComponent,
     FooterComponent,
     SettingsComponent,
-    AllmoviesComponent
+    AllmoviesComponent,
+    EntidadesComponent
   ],
   imports: [
     BrowserModule,
