@@ -20,15 +20,42 @@ const httpOptions = {
   templateUrl: './allmovies.component.html',
   styleUrls: ['./allmovies.component.sass']
 })
+
 export class AllmoviesComponent implements OnInit {
   peliculas: peliculas[] = [];
-
-  constructor(private peliculaService: AllmoviesService) { }
+  pelicula:peliculas= {} as peliculas;
+  peli:any;
+  constructor(private peliculaService: AllmoviesService, private http:HttpClient, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getPeliculas();
+
+    this.route.paramMap.subscribe((paramMap:any)=>{
+      const{params}=paramMap
+
+      this.editar(params.variable)
+      
+    })
   }
   
+  editar(id: string | undefined){
+    this.peliculaService.getPelicula(id)
+        .subscribe(
+          response=>{
+              
+            this.pelicula=response;
+            
+
+          });
+        
+   
+  }
+
+
+
+
+
+
   getPeliculas(){
     this.peliculaService.getPeliculas()
     .subscribe(
@@ -51,4 +78,11 @@ export class AllmoviesComponent implements OnInit {
     )
   }
 
+
+
+  
+
 }
+
+
+

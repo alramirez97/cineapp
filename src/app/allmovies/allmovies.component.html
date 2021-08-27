@@ -17,7 +17,7 @@
         <button class="btn btn-danger" (click)="deletePelicula(p._id)">
           Eliminar
         </button>
-        <button class="btn btn-secundary" [routerLink]="['/add-movie/', p._id]" >
+        <button class="btn btn-secundary" (click)="editar(peli.id)" [routerLink]="['/','add-movie', p._id]" >
           Editar pelicula
         </button>
       </a>

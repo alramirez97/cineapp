@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllmoviesComponent } from './allmovies/allmovies.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditmoviesComponent } from './editmovies/editmovies.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     SettingsComponent,
     AllmoviesComponent,
+    EditmoviesComponent,
     
   ],
   imports: [
