@@ -4,20 +4,28 @@
     </div>
 </div>
 
+
 <div class="container form-add">
     <div class="row">
         <div class="col-6">
-            <form action="">
+           
+            <form (ngSubmit)="submitMovies()">
                 <label for="">Nombre:</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Example: Black Widow">
+                <input type="text" name="titulo" [(ngModel)]= "pelicula.titulo" class="form-control" placeholder="Nombre de la pelicula" >
                 <label for="">Descripción:</label>
-                <input type="text" class="form-control" formControlName="description" placeholder="This movie is action">
+                <input type="text" class="form-control" [(ngModel)]="pelicula.duracion" name="duracion" placeholder="Duracion de la pelicula">
                 <label for="">Duración:</label>
-                <input type="text" class="form-control" formControlName="duration" placeholder="120 minutes">
+                <input type="text" class="form-control" [(ngModel)]="pelicula.clasificacion" name="clasificacion" placeholder="Clasificacion">
                 <label for="">Director:</label>
-                <input type="text" class="form-control" formControlName="director" placeholder="Cate Shortland">
+                <input type="text" class="form-control" [(ngModel)]="pelicula.imagen" name="imagem" placeholder="Imagen">
                 <label for="">Release movie:</label>
-                <input type="text" class="form-control" formControlName="release" placeholder="09/07/2021">
+                <input type="text" class="form-control" [(ngModel)]= "pelicula.genero" name="genero" placeholder="Genero">
+                <label for="">Estado</label>
+                <input type="text" class="form-control" [(ngModel)]= "pelicula.estatus" name="estatus" placeholder="Estado">
+                <label for="">Fecha</label>
+                <input type="calendar" class="form-control" [(ngModel)]= "pelicula.fechaEstreno" name="fechaEstreno" placeholder="Estado">
+                <label for="">Detalle</label>
+                <input type="text" class="form-control" [(ngModel)]= "pelicula.detalle_id" name="detalle_id" placeholder="Estado">
                 <button class="btn btn-primary btn-save">Save Movie</button>
             </form>
         </div>

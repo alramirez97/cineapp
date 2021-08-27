@@ -10,11 +10,7 @@ export interface peliculas {
    imagen: String;
    estatus:String;
    fechaEstreno:String;
-   detalle_id: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Detalles',
-    }],
+   detalle_id: String,
 }
 /*
  titulo: String;

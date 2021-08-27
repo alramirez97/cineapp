@@ -26,17 +26,28 @@ export class AllmoviesComponent implements OnInit {
   constructor(private peliculaService: AllmoviesService) { }
 
   ngOnInit(): void {
-    this.getReservacions();
+    this.getPeliculas();
   }
   
-  getReservacions(){
-    this.peliculaService.getReservacions()
+  getPeliculas(){
+    this.peliculaService.getPeliculas()
     .subscribe(
       (res :peliculas[]) => {
         console.log(res);
         this.peliculas = res ;
       },
       err => console.log(err),
+    )
+  }
+
+  deletePelicula(id: string | undefined){
+
+    this.peliculaService.deletePelicula(id)
+    .subscribe(
+      res => {
+        this.getPeliculas();
+      },
+      err => console.log(err)
     )
   }
 

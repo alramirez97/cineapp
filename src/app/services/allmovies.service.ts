@@ -29,20 +29,21 @@ export class AllmoviesService {
     
   }
 
-  getReservacions(): Observable<peliculas[]>{
+  getPeliculas(): Observable<peliculas[]>{
     return this.http.get<peliculas[]>(this.base +'/peliculas/todas', httpOptions);
   }
-  getReservacion(id: string): Observable<peliculas>{
-    return this.http.get<peliculas>(this.base +'/peliculas/${id}', httpOptions)
+  getPelicula(id: string | undefined): Observable<peliculas>{
+    return this.http.get<peliculas>(this.base +'/peliculas/uno/' + id, httpOptions)
   }
-  createReservacion(pelicula: peliculas): Observable<peliculas>{
+  createPelicula(pelicula: peliculas): Observable<peliculas>{
     return this.http.post<peliculas>(this.base +'/peliculas/create', pelicula, httpOptions)
   }
     
-  updateReservacion(id: string, pelicula: peliculas): Observable<peliculas>{
-    return this.http.put<peliculas>('/peliculas/editar/${id}', pelicula)
+  updatePelicula(id: string | undefined, pelicula: peliculas): Observable<peliculas>{
+    return this.http.put<peliculas>(this.base + '/peliculas/editar/' + id, pelicula)
   }
-  deleteReservacion(id: string ): Observable<peliculas>{
-    return this.http.delete<peliculas>('/peliculas/eliminar/${id}')
+  deletePelicula(id: string | undefined ): Observable<peliculas>{
+    console.log(id);
+    return this.http.delete<peliculas>(this.base +'/peliculas/eliminar/'+ id)
   }
 }

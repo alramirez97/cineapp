@@ -5,20 +5,24 @@
 </div>
 
 <div class="card card-body mb-2" *ngFor="let p of peliculas">
-  <div class="row">
-    <div class="col-md-8">
-      <ul>
-        <li>
-          {{p.titulo}}
-        </li>
-        <li>
-          {{p.clasificacion}}
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <img [src]="p.imagen" width="200" height="250" alt="">
-    </div>
+  <div class="row ">
+    <div class="col-3">
+      <a href="">
+        <div class="card">
+          <img [src]="p.imagen" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{p.titulo}}</h5>
+          </div>
+        </div>
+        <button class="btn btn-danger" (click)="deletePelicula(p._id)">
+          Deactivar
+        </button>
+        <button class="btn btn-secundary" [routerLink]="['/add-movie/', p._id]" >
+          Editar pelicula
+        </button>
+      </a>
+  </div>
+    
   </div>
 </div>
 
