@@ -61,7 +61,16 @@ export class AddmovieComponent implements OnInit {
       err => console.log(err)
     )
   }
-  
+  updatePelicula(){
+    this.allmovieService.updatePelicula(this.pelicula._id, this.pelicula)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/all-movies'])
+      },
+      err => console.log(err)
+    )
+  }
 
 }
 
