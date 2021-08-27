@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { peliculas } from '../entidades/peliculas';
 import { AllmoviesService } from '../services/allmovies.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addmovie',
@@ -29,12 +31,28 @@ export class AddmovieComponent implements OnInit {
 
   id: string | null | undefined;
 
+
+  miFormulario!: FormGroup;
+
+
+
+
+
   constructor(
     private allmovieService: AllmoviesService,
     private router: Router,
     private activateRoute: ActivatedRoute,
     private http: HttpClient,
-    ) { }
+    ) {
+
+      this.miFormulario = new FormGroup({
+
+        'titulo': new FormControl('',[Validators.required,Validators.minLength(2)]),
+        'duracion': new FormControl('',[Validators.required,Validators.maxLength(15)]),
+        'clasificacion':  new FormControl('',[Validators.required,Validators.maxLength(1)])
+      });
+
+     }
 
   ngOnInit(): void {
     const param = this.activateRoute.snapshot.params;
