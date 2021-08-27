@@ -1,75 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { peliculas } from '../entidades/peliculas';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Console } from 'console';
-
+import { AllmoviesService } from '../services/allmovies.service';
+/*
+const httpOptions = {
+  headers: new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*',
+    'Authorization':'authkey',
+    'userid':'1'
+  })
+};
+@Injectable({
+  providedIn: 'root'
+})*/
 @Component({
   selector: 'app-allmovies',
   templateUrl: './allmovies.component.html',
   styleUrls: ['./allmovies.component.sass']
 })
 export class AllmoviesComponent implements OnInit {
+  peliculas: peliculas[] = [];
 
-  peli: peliculas = {} as peliculas;
-  pelis:any;
-  base: string = 'http://localhost:3000';
+  constructor(private peliculaService: AllmoviesService) { }
 
-  constructor(  private http: HttpClient, 
-                private activatedRoiuter:ActivatedRoute) { 
-
-    http.get<peliculas>(this.base +'/peliculas')
-    .subscribe(response=>{this.pelis=response});
-
-  }
-
-  cargar(): void{
-    this.http.get(this.base +'/peliculas')
-    .subscribe(response=>{this.pelis=response});
-  }
-
-  enviarPos():void {
-    this.http.post<peliculas>('https://cineapp-plus.herokuapp.com/peliculas/create', this.peli)
-    .subscribe(Response => {
-      console.log(Response);
-      this.peli = {} as peliculas;
-      window.location.reload();
-    })
+  ngOnInit(): void {
+    this.getReservacions();
   }
   
-  //obtener uno
-  getUno(id:number): void{
-    this.http.get("https://frozen-meadow-48728.herokuapp.com/uno/"+id)
-  }
-
-  //editar
-  editar(id:number){
-    this.http.get<peliculas>("https://frozen-meadow-48728.herokuapp.com/uno/"+id)
+  getReservacions(){
+    this.peliculaService.getReservacions()
     .subscribe(
-      response => {
-        this.peli=response;
+      (res :peliculas[]) => {
+        console.log(res);
+        this.peliculas = res ;
       },
-      error => {
-        console.log(error);
-      });
-  }
-
-  //eliminar
-  eliminar(id:number): void {
-    if (confirm('¿Esta seguro que desea desactivar esta pelicula?')) {
-      this.http.delete<peliculas>('https://frozen-meadow-48728.herokuapp.com/eliminar/' + id)
-      .subscribe(
-        response => {
-         alert('Estudiante eliminado');
-         window.location.reload();
-        },
-        error => {
-          console.log(error);
-        });
-  }
-}
-  ngOnInit(): void {
-    
+      err => console.log(err),
+    )
   }
 
 }
