@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Console } from 'console';
 import { AllmoviesService } from '../services/allmovies.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 /*
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -25,9 +26,17 @@ export class AllmoviesComponent implements OnInit {
   peliculas: peliculas[] = [];
   pelicula:peliculas= {} as peliculas;
   peli:any;
-  constructor(private peliculaService: AllmoviesService, private http:HttpClient, private route:ActivatedRoute) { }
+  
+  constructor(
+    private peliculaService: AllmoviesService, 
+    private http:HttpClient, 
+    private route:ActivatedRoute
+    ) {
+      
+     }
 
   ngOnInit(): void {
+    
     this.getPeliculas();
 
     this.route.paramMap.subscribe((paramMap:any)=>{
@@ -39,6 +48,7 @@ export class AllmoviesComponent implements OnInit {
   }
   
   editar(id: string | undefined){
+    
     this.peliculaService.getPelicula(id)
         .subscribe(
           response=>{

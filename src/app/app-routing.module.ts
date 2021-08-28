@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:"add-movie",component:AddmovieComponent},
   {path:"all-movies",component:AllmoviesComponent},
   {path:"settings",component:SettingsComponent},
-  {path:"add-movie/:variable", component: AddmovieComponent}
+  {path:"app-editmovies/:id", component: EditmoviesComponent}
 ];
 
 @NgModule({

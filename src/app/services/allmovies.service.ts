@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { detalles } from '../entidades/detalles';
 import { peliculas } from '../entidades/peliculas';
 
 
@@ -32,6 +33,9 @@ export class AllmoviesService {
   getPeliculas(): Observable<peliculas[]>{
     return this.http.get<peliculas[]>(this.base +'/peliculas/todas', httpOptions);
   }
+  getDetalle(): Observable<detalles[]>{
+    return this.http.get<detalles[]>(this.base+'/detalle/todos', httpOptions);
+  };
   getPelicula(id: string | undefined): Observable<peliculas>{
     return this.http.get<peliculas>(this.base +'/peliculas/uno/' + id, httpOptions)
   }
