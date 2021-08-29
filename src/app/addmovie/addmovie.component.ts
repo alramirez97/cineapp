@@ -67,6 +67,7 @@ export class AddmovieComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.getDetalle();
 
     const param = this.activateRoute.snapshot.params;
     console.log(param)
@@ -84,7 +85,7 @@ export class AddmovieComponent implements OnInit {
     
   }
 
-  /*getDetalle(){
+  getDetalle(){
     this.allmovieService.getDetalle()
     .subscribe(
       (res :detalles[]) => {
@@ -93,7 +94,7 @@ export class AddmovieComponent implements OnInit {
       },
       err => console.log(err),
     )
-  }*/
+  }
   submitMovies(){
     this.allmovieService.createPelicula(this.miFormulario.value)
     .subscribe(
