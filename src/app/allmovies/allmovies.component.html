@@ -1,10 +1,32 @@
 <div class="container">
     <div class="row">
-        <h1>All movies by cineapp+</h1>
+        <h1>Cineapp+ listings</h1>
     </div>
 </div>
 
-<div class="card card-body mb-2" *ngFor="let p of peliculas">
+<div class="container form-all">
+  <div class="row">
+    <div class="col-3 card-movie" *ngFor="let p of peliculas">
+      <div class="card">
+        <img [src]="p.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{p.titulo}}</h5>
+          <p class="details-movie">Duración: {{p.duracion}} min.</p>
+          <p class="details-movie">Género: {{p.genero}}.</p>
+        </div>
+        <button class="btn btn-primary btn-edit" (click)="editar(peli.id)" [routerLink]="['/','app-editmovies', p._id]" >
+          Update
+        </button>
+        <button class="btn btn-danger btn-delete" (click)="deletePelicula(p._id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="card card-body mb-2" *ngFor="let p of peliculas">
   <div class="row ">
     <div class="col-4">
       <a href="">
@@ -25,4 +47,5 @@
     
   </div>
 </div>
+  -->
 
